@@ -7,28 +7,28 @@
 # changes.
 
 # Base Dockerfile for gRPC dev images
-FROM debian:latest
+FROM ppc64le/debian:latest
 
 # Apt source for old Python versions.
-RUN echo 'deb http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu trusty main' > /etc/apt/sources.list.d/deadsnakes.list && \
-  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys DB82666C
+#RUN echo 'deb http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu trusty main' > /etc/apt/sources.list.d/deadsnakes.list && \
+#  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys DB82666C
 
 # Apt source for Oracle Java.
-run echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' > /etc/apt/sources.list.d/webupd8team-java-trusty.list && \
-  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 && \
-  echo "oracle-java7-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
+#run echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' > /etc/apt/sources.list.d/webupd8team-java-trusty.list && \
+#  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 && \
+#  echo "oracle-java7-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
 
 # Apt source for Mono
-run echo "deb http://download.mono-project.com/repo/debian wheezy main" | tee /etc/apt/sources.list.d/mono-xamarin.list && \
-  echo "deb http://download.mono-project.com/repo/debian wheezy-libjpeg62-compat main" | tee -a /etc/apt/sources.list.d/mono-xamarin.list && \
-  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+#run echo "deb http://download.mono-project.com/repo/debian wheezy main" | tee /etc/apt/sources.list.d/mono-xamarin.list && \
+#  echo "deb http://download.mono-project.com/repo/debian wheezy-libjpeg62-compat main" | tee -a /etc/apt/sources.list.d/mono-xamarin.list && \
+#  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 
 # Install dotnet SDK based on https://www.microsoft.com/net/core#debian
 # (Ubuntu instructions need apt to support https)
-RUN apt-get update && apt-get install -y curl libunwind8 gettext && \
-  curl -sSL -o dotnet.tar.gz https://go.microsoft.com/fwlink/?LinkID=809130 && \
-  mkdir -p /opt/dotnet && tar zxf dotnet.tar.gz -C /opt/dotnet && \
-  ln -s /opt/dotnet/dotnet /usr/local/bin
+#RUN apt-get update && apt-get install -y curl libunwind8 gettext && \
+#  curl -sSL -o dotnet.tar.gz https://go.microsoft.com/fwlink/?LinkID=809130 && \
+#  mkdir -p /opt/dotnet && tar zxf dotnet.tar.gz -C /opt/dotnet && \
+#  ln -s /opt/dotnet/dotnet /usr/local/bin
 
 # Install dependencies.  We start with the basic ones require to build protoc
 # and the C++ build
