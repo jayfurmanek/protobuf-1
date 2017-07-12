@@ -7,7 +7,8 @@
 # changes.
 
 # Base Dockerfile for gRPC dev images
-FROM ppc64le/debian:latest
+#FROM ppc64le/debian:latest
+FROM ppc64le/ubuntu:latest
 
 # Apt source for old Python versions.
 #RUN echo 'deb http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu trusty main' > /etc/apt/sources.list.d/deadsnakes.list && \
@@ -61,14 +62,14 @@ RUN apt-get update && apt-get install -y \
   # -- For java_jdk7 -- \
   openjdk-7-jdk \
   # -- For java_oracle7 -- \
-  oracle-java7-installer \
+  #oracle-java7-installer \
   # -- For python / python_cpp -- \
   python-setuptools \
   python-pip \
   python-dev \
-  python2.6-dev \
-  python3.3-dev \
-  python3.4-dev \
+  #python2.6-dev \
+  #python3.3-dev \
+  #python3.4-dev \
   # -- For Ruby --
   ruby \
   && apt-get clean
@@ -76,7 +77,7 @@ RUN apt-get update && apt-get install -y \
 ##################
 # C# dependencies
 
-RUN wget www.nuget.org/NuGet.exe -O /usr/local/bin/nuget.exe
+#RUN wget www.nuget.org/NuGet.exe -O /usr/local/bin/nuget.exe
 
 ##################
 # Python dependencies
