@@ -52,9 +52,9 @@ RUN apt-get update && apt-get install -y \
   time \
   wget \
   # -- For csharp --
-  mono-devel \
-  referenceassemblies-pcl \
-  nunit \
+  #mono-devel \
+  #referenceassemblies-pcl \
+  #nunit \
   # -- For all Java builds -- \
   maven \
   # -- For java_jdk6 -- \
