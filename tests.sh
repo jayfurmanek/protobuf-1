@@ -128,11 +128,20 @@ build_golang() {
 
 use_java() {
   version=$1
+  java_arch=`uname -m`
+  if [ "$java_arch" == "ppc64le" ]; then
+    java_arch="ppc64el"
+  fi
   case "$version" in
     jdk7)
       on_travis sudo apt-get install openjdk-7-jdk
       export PATH=/usr/lib/jvm/java-7-openjdk-amd64/bin:$PATH
-      export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+      export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-{$java_arch}
+      ;;
+    jdk8)
+      on_travis sudo apt-get install openjdk-8-jdk
+      export PATH=/usr/lib/jvm/java-8-openjdk-amd64/bin:$PATH
+      export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-{$java_arch}
       ;;
     oracle7)
       if [ "$TRAVIS" == "true" ]; then
@@ -189,6 +198,10 @@ build_javanano() {
 
 build_java_jdk7() {
   use_java jdk7
+  build_java_with_conformance_tests
+}
+build_java_jdk8() {
+  use_java jdk8
   build_java_with_conformance_tests
 }
 build_java_oracle7() {
