@@ -136,12 +136,12 @@ use_java() {
     jdk7)
       on_travis sudo apt-get install openjdk-7-jdk
       export PATH=/usr/lib/jvm/java-7-openjdk-amd64/bin:$PATH
-      export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-{$java_arch}
+      export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-$java_arch
       ;;
     jdk8)
       on_travis sudo apt-get install openjdk-8-jdk
       export PATH=/usr/lib/jvm/java-8-openjdk-amd64/bin:$PATH
-      export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-{$java_arch}
+      export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-$java_arch
       ;;
     oracle7)
       if [ "$TRAVIS" == "true" ]; then
