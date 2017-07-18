@@ -26,7 +26,7 @@ rm -rf $PKG_DIR
 mkdir -p $PKG_DIR
 cd $PKG_DIR
 git clone /var/local/jenkins/protobuf/pkgbuild
-cd pkgbuild/protobuf
+cd $PKG_DIR/protobuf
 
 # Set up the directory where our test output is going to go.
 OUTPUT_DIR=`mktemp -d`
@@ -34,7 +34,7 @@ LOG_OUTPUT_DIR=$OUTPUT_DIR/logs
 mkdir -p $LOG_OUTPUT_DIR/1/cpp
 
 # Call into the package build code
-pkgbuild_jenkins.sh
+$PKG_DIR/protobuf/pkgbuild_jenkins.sh
 
 
 cat $OUTPUT_DIR/joblog
