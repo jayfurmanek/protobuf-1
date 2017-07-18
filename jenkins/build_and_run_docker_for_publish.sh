@@ -11,19 +11,22 @@
 
 set -ex
 
-MYDIR=$(dirname $0)
-cd ..
+cd $(dirname $0)/..
 git_root=$(pwd)
-#cd -
+cd -
 
 # clone pkgbuild from internal git hub - key needed in build slave 
 # into the same dir as protobuf (git_root). The container will
 # clone each repo into it's own space.
 #cd $PKGBUILD_LOCATION
+cd ..
 git clone $PKGBUILD_REMOTE
+cd -
+
+# checkout pkgbuild commit level
 cd pkgbuild
 git checkout $PKGBUILD_COMMIT
-cd $MYDIR
+cd -
 
 # Use image name based on Dockerfile location checksum
 DOCKER_IMAGE_NAME=$(basename $DOCKERFILE_DIR)_$(sha1sum $DOCKERFILE_DIR/Dockerfile | cut -f1 -d\ )
