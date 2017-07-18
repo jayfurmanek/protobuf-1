@@ -13,5 +13,5 @@ export DOCKERFILE_DIR=jenkins/docker
 export DOCKER_RUN_SCRIPT=jenkins/publish_deb.sh
 export OUTPUT_DIR=testoutput
 export PKGBUILD_COMMIT="22e0d63b7b23805ea23e54a89137984cf50dc0f8"  # I.e. "CI-dev"
-export PKGBUILD_REMOTE="git://github.ibm.com/mldlppc/pkgbuild.git"
+export PKGBUILD_REMOTE="git@github.ibm.com:mldlppc/pkgbuild.git"
 ./jenkins/build_and_run_docker_for_publish.sh
