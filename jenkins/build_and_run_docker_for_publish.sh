@@ -26,7 +26,7 @@ git clone $PKGBUILD_REMOTE
 # checkout pkgbuild commit level
 cd pkgbuild
 git checkout $PKGBUILD_COMMIT
-cd $git_root/jenkins
+cd $git_root
 
 # Use image name based on Dockerfile location checksum
 DOCKER_IMAGE_NAME=$(basename $DOCKERFILE_DIR)_$(sha1sum $DOCKERFILE_DIR/Dockerfile | cut -f1 -d\ )
