@@ -13,20 +13,20 @@ set -ex
 
 cd $(dirname $0)/..
 git_root=$(pwd)
-cd jenkins
+#cd jenkins
 
 # clone pkgbuild from internal git hub - key needed in build slave 
 # into the same dir as protobuf (git_root). The container will
 # clone each repo into it's own space.
 #cd $PKGBUILD_LOCATION
-cd ..
+#cd ..
 git clone $PKGBUILD_REMOTE
-cd -
+#cd -
 
 # checkout pkgbuild commit level
 cd pkgbuild
 git checkout $PKGBUILD_COMMIT
-cd -
+cd $git_root/jenkins
 
 # Use image name based on Dockerfile location checksum
 DOCKER_IMAGE_NAME=$(basename $DOCKERFILE_DIR)_$(sha1sum $DOCKERFILE_DIR/Dockerfile | cut -f1 -d\ )
