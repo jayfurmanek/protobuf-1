@@ -41,6 +41,7 @@ RUN apt-get update && apt-get install -y \
   ccache \
   curl \
   gcc \
+  g++ \
   git \
   libc6 \
   libc6-dbg \
@@ -72,6 +73,8 @@ RUN apt-get update && apt-get install -y \
   #python3.4-dev \
   # -- For Ruby --
   ruby \
+  unzip \
+  debhelper \
   && apt-get clean
 
 ##################
