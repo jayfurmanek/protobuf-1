@@ -20,8 +20,9 @@ git_root=$(pwd)
 # clone each repo into it's own space.
 #cd $PKGBUILD_LOCATION
 git clone $PKGBUILD_REMOTE
+cd pkgbuild
 git checkout $PKGBUILD_COMMIT
-cd -
+#cd -
 
 # Use image name based on Dockerfile location checksum
 DOCKER_IMAGE_NAME=$(basename $DOCKERFILE_DIR)_$(sha1sum $DOCKERFILE_DIR/Dockerfile | cut -f1 -d\ )
