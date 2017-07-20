@@ -20,12 +20,16 @@ cd $PKG_DIR
 git clone /var/local/jenkins/protobuf/pkgbuild
 cd $PKG_DIR/pkgbuild/protobuf
 
+ls -l $PKG_DIR/pkgbuild/protobuf
+
 # The protobuf repository is mounted into our Docker image, but read-only.
 # We clone into a directory inside Docker (this is faster than cp).
 #rm -rf $BUILD_DIR
 #mkdir -p $BUILD_DIR
 #cd $BUILD_DIR
 git clone /var/local/jenkins/protobuf
+
+ls -l $PKG_DIR/pkgbuild/protobuf
 
 # Set up the directory where our test output is going to go.
 OUTPUT_DIR=`mktemp -d`
