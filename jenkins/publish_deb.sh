@@ -6,19 +6,11 @@
 WORKSPACE_BASE=`pwd`
 MY_DIR="$(dirname "$0")"
 #TEST_SCRIPT=$MY_DIR/../tests.sh
-BUILD_DIR=/tmp/protobuf
-PKG_DIR=/tmp/pkgbuild
+#BUILD_DIR=/tmp/protobuf
+PKG_DIR=/tmp/build
 
 set -e  # exit immediately on error
 set -x  # display all commands
-
-
-# The protobuf repository is mounted into our Docker image, but read-only.
-# We clone into a directory inside Docker (this is faster than cp).
-rm -rf $BUILD_DIR
-mkdir -p $BUILD_DIR
-cd $BUILD_DIR
-git clone /var/local/jenkins/protobuf
 
 # The pkgbuild repository is mounted into our Docker image, but read-only.
 # We clone into a directory inside Docker (this is faster than cp).
@@ -27,6 +19,13 @@ mkdir -p $PKG_DIR
 cd $PKG_DIR
 git clone /var/local/jenkins/protobuf/pkgbuild
 cd $PKG_DIR/pkgbuild/protobuf
+
+# The protobuf repository is mounted into our Docker image, but read-only.
+# We clone into a directory inside Docker (this is faster than cp).
+#rm -rf $BUILD_DIR
+#mkdir -p $BUILD_DIR
+#cd $BUILD_DIR
+git clone /var/local/jenkins/protobuf
 
 # Set up the directory where our test output is going to go.
 OUTPUT_DIR=`mktemp -d`
