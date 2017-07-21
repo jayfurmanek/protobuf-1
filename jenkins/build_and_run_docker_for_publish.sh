@@ -20,6 +20,7 @@ git_root=$(pwd)
 # clone each repo into it's own space.
 #cd $PKGBUILD_LOCATION
 #cd ..
+rm -rf pkgbuild
 git clone $PKGBUILD_REMOTE
 #cd -
 
