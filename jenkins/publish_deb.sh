@@ -39,8 +39,10 @@ mkdir -p $LOG_OUTPUT_DIR/1/cpp
 # Call into the package build code
 $PKG_DIR/pkgbuild/protobuf/pkgbuild_jenkins.sh
 
+ls -l
 
-cat $OUTPUT_DIR/joblog
+# TODO save job log output
+#cat $OUTPUT_DIR/joblog
 
 # The directory that is copied from Docker back into the Jenkins workspace.
 COPY_FROM_DOCKER=/var/local/git/protobuf/testoutput
