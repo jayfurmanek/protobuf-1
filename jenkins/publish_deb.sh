@@ -20,16 +20,9 @@ cd $PKG_DIR
 git clone /var/local/jenkins/protobuf/pkgbuild
 cd $PKG_DIR/pkgbuild/protobuf
 
-ls -l $PKG_DIR/pkgbuild/protobuf
-
 # The protobuf repository is mounted into our Docker image, but read-only.
 # We clone into a directory inside Docker (this is faster than cp).
-#rm -rf $BUILD_DIR
-#mkdir -p $BUILD_DIR
-#cd $BUILD_DIR
 git clone /var/local/jenkins/protobuf
-
-ls -l $PKG_DIR/pkgbuild/protobuf
 
 # Set up the directory where our test output is going to go.
 OUTPUT_DIR=`mktemp -d`
@@ -39,19 +32,14 @@ mkdir -p $LOG_OUTPUT_DIR/1/cpp
 # Call into the package build code
 $PKG_DIR/pkgbuild/protobuf/pkgbuild_jenkins.sh
 
-ls -l
-
-# TODO save job log output
-#cat $OUTPUT_DIR/joblog
+ls -l *.deb
 
 # The directory that is copied from Docker back into the Jenkins workspace.
 COPY_FROM_DOCKER=/var/local/git/protobuf/testoutput
 mkdir -p $COPY_FROM_DOCKER
-#TESTOUTPUT_XML_FILE=$COPY_FROM_DOCKER/testresults.xml
 
 # Process all the output files from "parallel" and package them into a single
 # .xml file with detailed, broken-down test output.
-#python $MY_DIR/make_test_output.py $OUTPUT_DIR > $TESTOUTPUT_XML_FILE
 cp *.deb $COPY_FROM_DOCKER
 
 ls -l $COPY_FROM_DOCKER

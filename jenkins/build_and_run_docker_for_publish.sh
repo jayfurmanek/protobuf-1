@@ -13,13 +13,11 @@ set -ex
 
 cd $(dirname $0)/..
 git_root=$(pwd)
-#cd jenkins
 
 # clone pkgbuild from internal git hub - key needed in build slave 
 # into the same dir as protobuf (git_root). The container will
 # clone each repo into it's own space.
-#cd $PKGBUILD_LOCATION
-#cd ..
+
 rm -rf pkgbuild
 git clone $PKGBUILD_REMOTE
 #cd -
