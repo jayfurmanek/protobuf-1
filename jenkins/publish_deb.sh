@@ -47,10 +47,11 @@ ls -l
 # The directory that is copied from Docker back into the Jenkins workspace.
 COPY_FROM_DOCKER=/var/local/git/protobuf/testoutput
 mkdir -p $COPY_FROM_DOCKER
-TESTOUTPUT_XML_FILE=$COPY_FROM_DOCKER/testresults.xml
+#TESTOUTPUT_XML_FILE=$COPY_FROM_DOCKER/testresults.xml
 
 # Process all the output files from "parallel" and package them into a single
 # .xml file with detailed, broken-down test output.
-python $MY_DIR/make_test_output.py $OUTPUT_DIR > $TESTOUTPUT_XML_FILE
+#python $MY_DIR/make_test_output.py $OUTPUT_DIR > $TESTOUTPUT_XML_FILE
+cp *.deb $COPY_FROM_DOCKER
 
-ls -l $TESTOUTPUT_XML_FILE
+ls -l $COPY_FROM_DOCKER
